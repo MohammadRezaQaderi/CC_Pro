@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: time-zone-config
+data:
+  config-cluster.json: |
+    {
+      "address": "http://worldtimeapi.org/api/timezone/Asia/Tehran.txt",
+      "port" : 8080
+    }

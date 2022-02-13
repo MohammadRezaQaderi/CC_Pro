@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: time-zone
+  name: time-zone
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: time-zone
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: time-zone
+    spec:
+      containers:
+      - image: mohammadrezaqaderi/time-zone:1.2
+        name: time
+        resources: {}
+        ports:
+          - containerPort: 8080
+        volumeMounts:
+          - mountPath: /app/config-cluster.json
+            subPath: config-cluster.json
+            name: config-map
+            readOnly: true
+      volumes:
+        - name: config-map
+          configMap:
+            name: time-zone-config
+status: {}
