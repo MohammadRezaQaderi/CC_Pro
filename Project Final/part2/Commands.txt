@@ -1,0 +1,11 @@
+// for build image by Dockerfile
+// 			name		      docker file path
+	docker build -t python-datetime:1.0 .
+
+
+// taged for image 
+//					repo name	
+	docker tag python-datetime:1.0 MohammadRezaQaderi/python-datetime:1.0
+
+// docker push
+	docker image push MohammadRezaQaderi/python-datetime:1.0
