@@ -1,0 +1,29 @@
+// we work with kubernetes
+
+// we can get all pods by 
+	k get pods
+// get pods overally info
+ 	k get pods -o wide
+ 
+// At first delete unneded pods
+	k delete pod name
+
+// we apply yaml files
+	k apply -f file-name
+
+(file-name: config-map.yaml-> k get cm)
+(file-name: deployment.yaml-> k get deployment.apps)
+(file-name: service.yaml-> k get svc)
+
+// get the end points 
+	k get ep
+
+
+// run the package to use curl
+		name
+	k run -it net-utils --image=MohammadRezaQaderi/python-datetime:1.0
+
+
+// for restart the yaml file
+	at the first apply the (k apply -f config-map.yaml for ex)
+	k rollout deployment (k get deployment.apps)names
