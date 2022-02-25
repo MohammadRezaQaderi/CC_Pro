@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: url
+  name: url
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: url
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: url
+    spec:
+      containers:
+      - image: 
+        name: url
+        ports:
+          - containerPort: 8080
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
+        env:
+          - name: db_name
+            valueFrom:
+              secretKeyRef:
+                key: db_name
+                name: db-secret
+          - name: db_password
+            valueFrom:
+              secretKeyRef:
+                key: db_password
+                name: db-secret
+        volumeMounts:
+          - mountPath: /config.json
+            subPath: config.json
+            name: config-map
+      volumes:
+        - name: config-map
+          configMap:
+            name: url-config
+status: {}
